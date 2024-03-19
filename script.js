@@ -23,6 +23,18 @@ var cidade = document.getElementById("cidade");
 var estado = document.getElementById("estado");
 
 function alertar(){
+
+   const url = `https://viacep.com.br/ws/${cep}/json`;
+         
+   fetch(url)
+   .then(resposta=>resposta.json())
+   .then(data => {
+      logradouro.value = data.logradouro;
+      bairro.value = data.bairro;
+      cidade.value = dala.cidade;
+      estado.value = data.estado
+   
+
    // alert("Voce clicou no botao!!!");
    saida.innerText = "nome: " + " " + nome.value +
                             "\n E-mail: " + " " + email.value +
@@ -35,4 +47,11 @@ function alertar(){
                             "\n Cidade: " + " " + cidade.value+
                             "\n Estado: " + " " + estado.value;
 
+                           })
+                           .catch(error=>alert(error))
+
+
+       
+
 }
+
